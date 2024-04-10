@@ -42,10 +42,11 @@ export class RyuCho {
     this.repo.setup()
 
     const run = await this.getRun()
-    const feed = await this.getFeed()
+    const feed = (await this.getFeed()) as Feed[]
+    feed.sort((a, b) => (a.isoDate > b.isoDate ? 1 : -1))
 
     for (const i in feed) {
-      await this.processFeed(feed[i] as Feed, run)
+      await this.processFeed(feed[i], run)
     }
   }
 
