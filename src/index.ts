@@ -19,7 +19,8 @@ const config = createConfig({
   headRepoBranch: process.env.HEAD_REPO_BRANCH,
   workflowName: process.env.WORKFLOW_NAME,
   trackFrom: process.env.TRACK_FROM!,
-  pathStartsWith: process.env.PATH_STARTS_WITH
+  pathStartsWith: process.env.PATH_STARTS_WITH,
+  labels: process.env.LABELS
 })
 
 const ryuCho = new RyuCho(config)

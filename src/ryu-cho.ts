@@ -1,4 +1,4 @@
-import { log, extractBasename, removeHash } from './utils'
+import { log, extractBasename, removeHash, splitByNewline } from './utils'
 import { Config, Remote } from './config'
 import { Rss } from './rss'
 import { GitHub } from './github'
@@ -118,10 +118,12 @@ export class RyuCho {
   protected async createIssue(feed: Feed) {
     const title = removeHash(feed.title)
     const body = `New updates on head repo.\r\n${feed.link}`
+    const labels = splitByNewline(this.config.labels)
 
     const res = await this.github.createIssue(this.upstream, {
       title,
-      body
+      body,
+      labels
     })
 
     log('S', `Issue created: ${res.data.html_url}`)

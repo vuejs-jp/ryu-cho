@@ -4,6 +4,7 @@ import { Remote } from './config'
 export interface CreateIssueOptions {
   title: string
   body: string
+  labels: string[]
 }
 
 export interface CreatePullRequestOptions {
@@ -38,7 +39,8 @@ export class GitHub {
       owner: remote.owner,
       repo: remote.name,
       title: options.title,
-      body: options.body
+      body: options.body,
+      labels: options.labels
     })
   }
 

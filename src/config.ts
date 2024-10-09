@@ -84,6 +84,17 @@ export interface UserConfig {
    * @example 'docs/'
    */
   pathStartsWith?: string
+
+  /**
+   * Labels to add to the issues. You can specify multiple labels. Each
+   * label must be separated by a newline.
+   *
+   * @default undefined
+   * @example |
+   *  label1
+   *  label2
+   */
+  labels?: string
 }
 
 export interface Config {
@@ -93,6 +104,7 @@ export interface Config {
   workflowName: string
   trackFrom: string
   pathStartsWith?: string
+  labels?: string
 
   remote: {
     upstream: Remote
@@ -115,6 +127,7 @@ export function createConfig(config: UserConfig): Config {
     workflowName: config.workflowName ?? 'ryu-cho',
     trackFrom: config.trackFrom,
     pathStartsWith: config.pathStartsWith,
+    labels: config.labels,
 
     remote: {
       upstream: {

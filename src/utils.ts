@@ -47,3 +47,11 @@ export function extractRepoOwner(url: string): string {
 export function removeHash(text: string): string {
   return text.replace(/( )?\(#.*\)/, '')
 }
+
+export function splitByNewline(text: string | undefined): string[] {
+  if (!text) {
+    return []
+  }
+
+  return text.split('\n').filter((line) => line.trim() !== '')
+}

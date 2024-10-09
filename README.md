@@ -60,6 +60,14 @@ jobs:
           # Ryu-Cho determines the last run by looking into last workflow
           # run timestamp. Optional. Defaults to `ryu-cho`.
           workflow-name: ryu-cho
+
+          # Labels to add to the issues. You can specify multiple labels.
+          # Each label must be separated by a newline.
+          # Optional. Defaults to empty(no labels are added).
+          labels: |
+            sync
+            needs review
+            my label
 ```
 
 The important part to note is that you must match the GitHub workflow name to `workflow-name` option.
